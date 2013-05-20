@@ -1,0 +1,22 @@
+{
+	"name":"Page Links",
+	"version": "1.0",
+	"permissions":[ "tabs", "http://*/*", "https://*/*" ],
+	"background":{
+		"scripts": ["jquery-1.9.1.min.js"],
+		"persistent": true
+	},
+	"browser_action": {
+		"dafault_titile": "pageLinks",
+		"dafault_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["myscript.js"],
+			"run_at": "document_start"
+		}
+	],
+	"manifest_version": 2
+}
