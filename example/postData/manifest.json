@@ -1,0 +1,17 @@
+{
+	"name":"A Post Data",
+	"version": "1.0",
+	"permissions":[ "http://code1.myclover.org/Match.aspx" ],
+	"browser_action": {
+		"dafault_titile": "A Post Data",
+		"dafault_icon": "icon.png"
+	},
+	"content_scripts": [
+		{
+			"matches": ["http://*.myclover.org/*"],
+			"js": ["jquery-1.9.1.min.js", "md5.js", "jquery.cookie.js", "myscript.js"],
+			"run_at": "document_start"
+		}
+	],
+	"manifest_version": 2
+}
