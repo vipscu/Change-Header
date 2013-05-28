@@ -178,7 +178,7 @@ function isCheck() {
 	//排除一些不需要检测的网站，比如百度、谷歌以及一些现有开源程序也不需要检测
 	var _url = window.location.href;
 	var host = $.url().attr('host');
-	var exceptHost = ['qq.com', 'google.com', 'baidu.com', 'bing.com']
+	var exceptHost = ['qq.com', 'google.com', 'baidu.com', 'bing.com', 'taobao.com']
 	var exceptKeywords = ['discuz', 'wordpress', 'joomla']
 	for(var oneHost in exceptHost){
 		if(host.indexOf(exceptHost[oneHost])>=0){
@@ -201,7 +201,7 @@ function isCheck() {
 	return true;
 }
 
-
+/*
 $(document).ready(function() {
 	if(isCheck() == false){
 		return;
@@ -215,6 +215,20 @@ $(document).ready(function() {
 	}
 	//showResult('very OK');
 });
+*/
+window.onload = function() {
+	if(isCheck() == false){
+		return;
+	}
+	var urls = getPageLinks();
+	//获取页面中所有的url
+	var links = dealLinks(urls);
+	//得到需要進行检测的url
+	for (var link in links) {
+		checkInjection(links[link]);
+	}
+	//showResult('very OK');
+};
 
 function showResult(_str) {
 	//将检测出来的结果显示在当前页面的顶端
