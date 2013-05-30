@@ -1,7 +1,7 @@
 #main {
 	padding: 5px 8px 3px 8px;
 	width: 500px;
-	height: 300px;
+	height: 380px;
 }
 
 h3 {
@@ -41,6 +41,10 @@ hr {
 	margin-top: 5px;
 	margin-left: 4px;
 	margin-bottom: 3px;
+}
+
+#exceptUrltext, #includeUrltext {
+	width: 354px;
 }
 
 #divButton {

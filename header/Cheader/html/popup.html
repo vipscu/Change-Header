@@ -14,7 +14,10 @@
 				<span class="text">X-Forward-For:</span><input type="text" class="input" id="xForward" name="XForward" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="randomip"  /> Random IP<br />
 				<span class="text">Referer:</span><input type="text" class="input" id="referer" name="referer" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="targeturl"  /> Target URL<br />
 				<span class="text">User-Agent:</span><input type="text" class="input" id="userAgent" name="Uagent" /><br />
-				<span class="text">Cookie:</span><textarea class="input" cols="input" id="cookieArea" name="Cookie"></textarea>
+				<span class="text">Cookie:</span><textarea class="input" cols="input" id="cookieArea" name="Cookie" placeholder="If the input is null, then it will use the origin value."></textarea>
+				<hr />
+				<input type="radio" id="exceptUrl" checked="checked"/> Except HOST: <input type="text" id="exceptUrltext" value=".google.com;.baidu.com;.qq.com" /><br />
+				<input type="radio" id="includeUrl" /> Include URL: <input type="text" id="includeUrltext" disabled="disabled" placeholder="Target site is ok" /><br />
 				<hr />
 				<div id="divButton">
 					<input type="button" class="button" id="enter" value="Enter" /><input type="button" class="button" id="reset" value="Reset" />

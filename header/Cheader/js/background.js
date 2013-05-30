@@ -1,15 +1,41 @@
 console.log('backgroud');
 chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
-	if (localStorage['isChange'] == 'true') {
-		var url = details.url;
+	var url = details.url;
+	if (isChange(url)) {
 		var headers = details.requestHeaders;
-		//console.log("start request url:" + url);
+		console.log("start request url:" + url);
 		var blockingResponse = modifyHeader(headers, url);
 		return blockingResponse;
 	}
 }, {
 	urls : ["http://*/*", "https://*/*"]
 }, ["requestHeaders", "blocking"]);
+
+function isChange(_url){
+	var host = _url.split('/')[2];
+	if (localStorage['isChange'] != 'true'){
+		return false;
+	} 
+	if (localStorage['exceptUrl'] == 'true'){
+		var exceptHost = localStorage['exceptUrltext'].split(';');
+		for(var i=0; i<exceptHost.length; i++){
+			var reg = exceptHost[i].replace(/\./g,'\\\.');
+			if(host.match(reg) != null){
+				return false;
+			}
+		}
+	}
+	else if (localStorage['includeUrl'] == 'true'){
+		var includeUrl = localStorage['includeUrltext'].split(';');
+		for(var i=0; i<includeUrl.length; i++){
+			var reg = includeUrl[i].replace(/\./g,'\\\.');
+			if(host.match(reg) == null){
+				return false;
+			}
+		}
+	}
+	return true;
+}
 
 function modifyHeader(_headers, _url){
 	var blockingResponse = {};
@@ -52,19 +78,20 @@ function modifyHeader(_headers, _url){
 	}
 	if(isxForward == false){
 		if(localStorage['xForward'].length > 6){
-			_headers['X-Forward-For'] = localStorage['xForward'];
+			_headers.push({name:'X-Forwarded-For',value:localStorage['xForward']});
+			//_headers['X-Forward-For'] = localStorage['xForward'];
 		}
 		else if (localStorage['randomip'] == 'true') {
-			_headers['X-Forward-For'] = Math.floor(Math.random()*225)+'.'+Math.floor(Math.random()*255)+'.'+Math.floor(Math.random()*255)+'.'+Math.floor(Math.random()*255);
+			_headers.push({name:'X-Forwarded-For',value:Math.floor(Math.random()*225)+'.'+Math.floor(Math.random()*255)+'.'+Math.floor(Math.random()*255)+'.'+Math.floor(Math.random()*255)});
 		}
 		isxForward = true;
 	}
 	if(isReferer == false){
 		if(localStorage['referer'].length > 6){
-			_headers['Referer'] = localStorage['referer'];
+			_headers.push({name:'Referer',value:localStorage['referer']});
 		}
 		else if(localStorage['targeturl'] == 'true'){
-			_headers['Referer'] = _url;
+			_headers.push({name:'Referer',value:_url});
 		}
 		isReferer = true;
 	}
@@ -81,5 +108,7 @@ function modifyHeader(_headers, _url){
 		iscookie = true;
 	}
 	blockingResponse.requestHeaders = _headers;
+	
+	console.log(blockingResponse);
 	return blockingResponse;
 }
