@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Change Request Header Setting</title>
+		<link href="../css/popup.css" rel="stylesheet" type="text/css">
+		<script src="../js/jquery.js"></script>
+		<script src="../js/popup.js"></script>
+	</head>
+	<body>
+		<div id="main">
+			<h3>Change Request Header Setting</h3>
+			<hr />
+			<div id="setting">
+				<span class="text">X-Forward-For:</span><input type="text" class="input" id="xForward" name="XForward" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="randomip"  /> Random IP<br />
+				<span class="text">Referer:</span><input type="text" class="input" id="referer" name="referer" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="targeturl"  /> Target URL<br />
+				<span class="text">User-Agent:</span><input type="text" class="input" id="userAgent" name="Uagent" /><br />
+				<span class="text">Cookie:</span><textarea class="input" cols="input" id="cookieArea" name="Cookie"></textarea>
+				<hr />
+				<div id="divButton">
+					<input type="button" class="button" id="enter" value="Enter" /><input type="button" class="button" id="reset" value="Reset" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

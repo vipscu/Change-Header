@@ -1,0 +1,56 @@
+#main {
+	padding: 5px 8px 3px 8px;
+	width: 500px;
+	height: 300px;
+}
+
+h3 {
+	color: #2828FF;
+	display: inline
+}
+
+hr {
+	height:5px;
+	border:none;
+	border-top:3px double #0072E3;
+}
+
+#divButton .button {
+	width: 60px;
+	height: 28px;
+	font-size: 14px;
+}
+
+#setting .text {
+	margin-left: 8px;
+	display: block;
+	width: 125px;
+	float:left;
+	padding-top: 4px;
+}
+
+#setting .input {
+	width: 180px;
+	height: 18px;
+	margin-top: 2px;
+}
+
+#setting #cookieArea {
+	height: 85px;
+	width: 480px;
+	margin-top: 5px;
+	margin-left: 4px;
+	margin-bottom: 3px;
+}
+
+#divButton {
+	margin-bottom: 8px;
+}
+
+#divButton #enter {
+	margin-left: 360px;
+}
+
+#divButton #reset {
+	margin-left: 10px;
+}

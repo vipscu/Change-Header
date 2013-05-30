@@ -1,0 +1,21 @@
+{
+	"name": "Change Request Header",
+	"description": "Change Http/Https Request Header!",
+	"version": "1.0",
+	"browser_action": {
+		"default_title": "Change Request Header",
+		"dafault_icon": "./icons/icon.png",
+		"default_popup": "./html/popup.html"
+	},
+	"icons": {
+		"16": "./icons/icon.png",
+		"32": "./icons/icon.png",
+		"48": "./icons/icon.png",
+		"128": "./icons/icon.png"
+	},
+	"background": {
+		"scripts": ["./js/background.js"]
+	},
+	"permissions": ["tabs", "webRequestBlocking", "webRequest", "<all_urls>"],
+	"manifest_version": 2
+}
