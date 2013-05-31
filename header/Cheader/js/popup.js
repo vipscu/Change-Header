@@ -61,6 +61,10 @@ $(document).ready(function() {
 		$('#referer').val('');
 		$('#userAgent').val('');
 		$('#cookieArea').val('');
+		$('#exceptUrltext').val('.google.com;.baidu.com;.qq.com');
+		$('#includeUrltext').val('');
+		$('#exceptUrl').attr({'checked': true});
+		$('#includeUrl').removeAttr('checked');
 		
 		localStorage['xForward'] = '';
 		localStorage['referer'] = '';
@@ -69,6 +73,10 @@ $(document).ready(function() {
 		localStorage['randomip'] = false;
 		localStorage['targeturl'] = false;
 		localStorage['isChange'] = false;
+		localStorage['exceptUrl'] = true;
+		localStorage['includeUrl'] = false;
+		localStorage['exceptUrltext'] = '.google.com;.baidu.com;.qq.com';
+		localStorage['includeUrltext'] = '';
 		
 		$('#enter').attr({'disabled': false});
 	})
